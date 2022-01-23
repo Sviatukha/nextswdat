@@ -1,0 +1,26 @@
+.navbarBlock {
+  width: 20vw;
+  height: 100vh;
+  border-right: yellow 1px solid;
+  padding: 30px 15px;
+
+  .title {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .categoriesList {
+    list-style: none;
+
+    .categoriesItem {
+      margin-bottom: 10px;
+      display: block;
+      text-decoration: none;
+      color: wheat;
+    }
+
+    .categoriesItem:hover {
+      color: gold;     
+    }
+  }
+}
