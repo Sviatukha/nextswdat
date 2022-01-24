@@ -1,6 +1,9 @@
 export async function getData  (category, id)  {
   category =  category === 'characters' ? 'people' : category;
     const resp =  await  fetch(`https://swapi.dev/api/${category}/${id ? id : ''}`)
+    if(resp.status != 200) {
+      return undefined
+    }
     const response = await resp.json();
     console.log(`https://swapi.dev/api/${category}/${id ? id : ''}`)
     return  response.results

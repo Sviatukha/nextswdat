@@ -4,11 +4,10 @@ import { useRouter } from "next/router"
 import { useEffect, useState } from "react";
 import { categories, getData, getUrl } from "../service";
 import styles from "../styles/itemList.module.scss"
+import broken from '../public/images/broken.jpeg'
 
 
-const Category = ({list}) => {
-
-  const category = router.query.category;
+const Category = ({list ,category}) => {
 
   return (
     <div className={styles.mainBlock}>
@@ -19,14 +18,15 @@ const Category = ({list}) => {
             <Image 
               className={styles.itemImage} 
               src={getUrl(category, index)} 
-              placeholder='blur'
+              width="100%"
+              height="100%"
+              layout='responsive'
+              objectFit="contain"
+              priority='false'
               alt={item.name}
-              onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/0be48716840055.562b1f5cb3202.JPG"
-                }
-              }
-              />
+              placeholder='blur'
+              blurDataURL='/images/broken.jpeg'
+            />
             <Link className='itemName' href={`/${category}/${index}`}> 
               <a>{category === "films" ? item.title : item.name}</a>
             </Link>
@@ -38,22 +38,28 @@ const Category = ({list}) => {
 }
 
 export async function getStaticProps(context) {
-  const category = context.params.eventId;
-
+  const category = context.params.category;
   const data = await getData(category);
-
-  console.log(data, 'data')
-
+  console.log(data , 'data false')
+  if(!data) {
+    console.log('fallback')
+    return {
+      notFound: true
+    }
+  }
   return {
     props: {
-      list: data
+      list: data,
+      category: category
     }
   }
 }
 
 export async function getStaticPaths() {
 
-  const paths = categories.map(category => {params: {category: category}})
+  const paths = categories.map(category => {
+    return {params: {category: category}}
+  })
 
   return {
     paths: paths,

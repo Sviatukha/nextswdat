@@ -1,3 +1,17 @@
-p {
-  max-width: 14vw;
+.itemBlock {
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+
+  .imageWrapper {
+    position: relative;
+    min-width: 30vw;
+  }
+
+  .back {
+    text-decoration: none;
+    color: antiquewhite;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+  }
 }

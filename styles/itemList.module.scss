@@ -12,6 +12,9 @@
     .item {
       min-width: 14vw;
       margin-bottom: 15px;
+      position: relative;
+      max-width: 20vw;
+      max-height: 20vw;
 
       .itemImage {
         width: 13vw;

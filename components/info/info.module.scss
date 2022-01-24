@@ -1,7 +1,18 @@
-.paragraph {
+.list {
+ padding-left:  40px;
+
+ .paragraph {
    max-width: 40vw;
+   margin-bottom: 15px;
 
    .subtitle {
       color: white;
+      font-weight: bold;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
    }
+
+   .text {
+      line-height: 1.5em;
+   }
+}
 }
