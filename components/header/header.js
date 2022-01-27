@@ -1,9 +1,12 @@
+import Link from 'next/link'
 import style from './header.module.scss'
 
 const Header = () => {
   return (
     <header className={style.header}>
-      HEADER
+      <Link href="/">
+        <a>Star wars data</a>
+      </Link>
     </header>
   )
 }

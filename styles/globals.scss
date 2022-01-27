@@ -28,15 +28,10 @@ body {
         .item {
           min-width: 14vw;
           margin-bottom: 15px;
+          text-align: center;
     
           .itemImage {
             width: 13vw;
-          }
-    
-          a {
-            display: block;
-            text-decoration: none;
-            color: yellowgreen;
           }
     
           a:hover {
@@ -55,5 +50,57 @@ body {
 
   }
 }
+a {
+  display: block;
+  text-decoration: none;
+  color: yellowgreen;
+}
 
+main {
+  flex: 3;
+  position: relative;
+}
 
+#titles {
+	position: absolute;
+	width: 18em;
+	height: 45em;
+	bottom: 0;
+	left: 56%;
+	margin-left: -9em;
+	font-size: 350%;
+	font-weight: bold;
+	text-align: justify;
+	overflow: hidden;
+	transform-origin: 50% 100%;
+	transform: perspective(417px) rotateX(25deg);
+}
+
+#titles:after
+{
+	position: absolute;
+	content: ' ';
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 60%;
+	background: linear-gradient(180deg, black, transparent);
+	pointer-events: none;
+}
+
+#titlecontent
+{
+	position: absolute;
+	top: 100%;
+  line-height: 2em;
+	animation: scroll 100s linear 0s infinite;
+
+  .center {
+    text-align: center;
+  }
+}
+
+@keyframes scroll {
+	0% { top: 90%; }
+	100% { top: -170%; }
+}

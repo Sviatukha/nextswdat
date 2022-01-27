@@ -5,7 +5,6 @@ export async function getData  (category, id)  {
       return undefined
     }
     const response = await resp.json();
-    console.log(`https://swapi.dev/api/${category}/${id ? id : ''}`)
     return  response.results
 }
 

@@ -4,14 +4,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "lint": "next lint"
   },
   "dependencies": {
     "next": "12.0.8",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sass": "^1.49.0"
+    "sass": "^1.49.0",
+    "sharp": "^0.29.3"
   },
   "devDependencies": {
     "eslint": "8.7.0",

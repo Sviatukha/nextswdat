@@ -3,6 +3,7 @@ import Link from "next/link";
 import { categories, getData, getUrl } from "../service";
 import styles from "../styles/itemList.module.scss";
 import Head from "next/head";
+import broken from "../public/images/broken.jpeg"
 
 
 const Category = ({list ,category}) => {
@@ -28,9 +29,14 @@ const Category = ({list ,category}) => {
                 alt={item.name}
                 placeholder='blur'
                 blurDataURL='/images/broken.jpeg'
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "/images/broken.jpeg";
+                  e.target.srcset = "/images/broken.jpeg";
+                }}
               />
-              <Link className='itemName' href={`/${category}/${index}`}> 
-                <a>{category === "films" ? item.title : item.name}</a>
+              <Link  href={`/${category}/${index}`}> 
+                <a  className='itemName'>{category === "films" ? item.title : item.name}</a>
               </Link>
             </li>)
           })}

@@ -3,6 +3,7 @@
   height: 100vh;
   border-right: yellow 1px solid;
   padding: 30px 15px;
+  flex: 1;
 
   .title {
     text-align: center;
@@ -11,12 +12,15 @@
 
   .categoriesList {
     list-style: none;
+    margin-left: 0;
+    padding-left: 0;
 
     .categoriesItem {
       margin-bottom: 10px;
       display: block;
       text-decoration: none;
       color: wheat;
+      text-align: center;
     }
 
     .categoriesItem:hover {
