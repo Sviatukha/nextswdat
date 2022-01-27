@@ -12,10 +12,10 @@ const Info = ({info, category}) => {
   };
   return (
     <ul className={styles.list}>
-      {categoriesData[category].map((item, index) => {
+      {categoriesData[category]&&categoriesData[category].map((item, index) => {
        return <li key={index} className={styles.paragraph}>
           <span className={styles.subtitle}>{item.replace("_", " ").replace(/\b\w/g, l => l.toUpperCase())}: </span>
-          <span className={styles.text}>{info[item]}</span>
+          <span className={styles.text}>{info&&info[item]}</span>
         </li>
       })}
     </ul>

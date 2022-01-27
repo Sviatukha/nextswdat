@@ -3,10 +3,11 @@ import Link from "next/link";
 import { categories, getData, getUrl } from "../service";
 import styles from "../styles/itemList.module.scss";
 import Head from "next/head";
-import broken from "../public/images/broken.jpeg"
 
 
-const Category = ({list ,category}) => {
+const Category = ({list ,category, setData}) => {
+
+  setData(list)
 
   return (
     <>
@@ -49,9 +50,7 @@ const Category = ({list ,category}) => {
 export async function getStaticProps(context) {
   const category = context.params.category;
   const data = await getData(category);
-  console.log(data , 'data false')
   if(!data) {
-    console.log('fallback')
     return {
       notFound: true
     }

@@ -1,19 +1,26 @@
 import Link from "next/link";
-import { getData, getUrl } from "../service";
+import { getUrl } from "../service";
 import Info from "../components/info/info";
 import Image from "next/image";
 import styles from "../styles/item.module.scss"
+import { useRouter } from "next/router";
+import { categories } from "../service";
 
 
 
-const Item = ({category, id, data}) => {
-  console.log('render')
+const Item = ({data}) => {
+
+  const router = useRouter();
+  const category = router.query.item&&router.query.item[0];
+  const id = router.query.item&&router.query.item[1];
+
+  console.log(data)
 
   return (
     {category} && <div className={styles.itemBlock}>
       <div className={styles.imageWrapper}>
         <Image 
-          src={category && getUrl(category, id)} 
+          src={category ? getUrl(category, id) : "/images/broken.jpeg"} 
           alt={`${category}/${id}`}
           width={300}
           height={300}
@@ -32,23 +39,5 @@ const Item = ({category, id, data}) => {
   )
 }
 
-export async function getServerSideProps(context) {
-  const category = context.params.item[0];
-  const id = context.params.item[1];
-  const data = await getData(category)
-  if(!data) {
-    return {
-      notFound: true
-    }
-  }
-  console.log('fetched')
-  return {
-    props: {
-      id: id,
-      category: category,
-      data: data
-    }
-  }
-}
 
 export default Item

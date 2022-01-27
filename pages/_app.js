@@ -1,9 +1,11 @@
-import '../styles/globals.scss'
-import Header from '../components/header/header'
-import Navbar from '../components/navbar/navbar'
-import Head from 'next/head'
+import '../styles/globals.scss';
+import Header from '../components/header/header';
+import Navbar from '../components/navbar/navbar';
+import Head from 'next/head';
+import { useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
+  const [data, setData] = useState({})
   return (
     <>
       <Head>
@@ -12,7 +14,7 @@ function MyApp({ Component, pageProps }) {
       <Header />
       <Navbar />
       <main>
-        <Component {...pageProps} />
+        <Component {...pageProps}  setData={setData} data={data}/>
       </main>
     </>
   )
